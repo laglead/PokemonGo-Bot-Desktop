@@ -1,6 +1,6 @@
-import os from 'os';
-import fs from 'fs-extra';
-import path from 'path';
+const os = require('os');
+const fs = require('fs-extra');
+const path = require('path');
 
 function ensureConfigFilePresent() {
 
@@ -27,6 +27,10 @@ function ensureUserdataFilePresent() {
 const startBot = function (botPath, options) {
   // Rename config.json if needed
   ensureConfigFilePresent();
+
+
+  console.log(fs)
+  console.log(path.join(botPath, '/configs/config.json'))
 
 
   // Load user config
