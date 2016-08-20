@@ -126,19 +126,8 @@ gulp.task('build:js', callback => {
     .bundle()
     .pipe(fs.createWriteStream(`${BUILD_DIR}/webapp-bundle.js`));
 
-  browserify({
-    entries: './app/electron.js',
-    extensions: ['.js'],
-    ignoreMissing: true,
-    detectGlobals: false,
-    bare: true,
-    debug: true
-  })
-    .transform(babelify)
-    .bundle()
-    .pipe(fs.createWriteStream(`${BUILD_DIR}/electron.js`))
-    .on('end', callback)
 
+  gulp.src('./app/electron.js', {base: './app'}).pipe(gulp.dest(BUILD_DIR)).on('end', callback)
 
   /*
    const browserConfig = {
@@ -152,8 +141,9 @@ gulp.task('build:js', callback => {
 });
 
 gulp.task('build:assets', () => gulp.src('app/src/assets/**/*', {base: 'app/src'}).pipe(gulp.dest(BUILD_DIR)));
+gulp.task('build:html', () => gulp.src('app/src/index.html', {base: 'app/src'}).pipe(gulp.dest(BUILD_DIR)));
 
-gulp.task('build', _ => rseq('build:clean', ['gofbot', 'build:node', 'build:js', 'build:assets'], _));
+gulp.task('build', _ => rseq('build:clean', ['gofbot', 'build:node', 'build:js', 'build:html', 'build:assets'], _));
 
 /*********************
  *      ELECTRON     *
