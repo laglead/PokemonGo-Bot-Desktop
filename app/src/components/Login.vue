@@ -413,7 +413,7 @@
             }
         },
         components: {
-            Config: require("./Login/Config"),
+            Config: require("./Login/Config.vue"),
         }
     }
 </script>

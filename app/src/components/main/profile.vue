@@ -134,7 +134,7 @@
 <script>
     const constants = require('./const.js'),
           path      = require('path'),
-          Modal     = require('../Modal');
+          Modal     = require('../Modal.vue');
 
 
     export default {

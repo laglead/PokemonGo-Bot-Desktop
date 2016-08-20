@@ -15,6 +15,9 @@
 </template>
 
 <script>
+    // FIXME NEED TO INCLUDE codemirror/lib/codemirror.css
+
+
     const fs       = require('fs-extra'),
           electron = require('electron').remote,
           path     = require('path'),
@@ -44,7 +47,6 @@
 
             this.$nextTick(() => {
                 require("codemirror/mode/javascript/javascript");
-                require("codemirror/lib/codemirror.css");
                 this.editor = require("codemirror").fromTextArea(document.getElementById("config"), {
                     lineNumbers: true,
                     mode: "application/json",
